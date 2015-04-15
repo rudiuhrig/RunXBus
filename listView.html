@@ -1,0 +1,73 @@
+<div class="container" style="width: 60%">
+	<h2>{{appTitle}}</h2>
+
+	<div class="jumbotron">
+		<div>Inform street name</div>
+			<form name="searchForm">
+			
+				<div class="controls form-inline">
+					<input type="text" 
+						placeholder="Search by street name and tap search button" style="width: 50%"
+						ng-model="route.stopName"
+						name="stopName"
+						ng-required="true" 
+						ng-minlength="3" 
+						ng-maxlength="50" 
+						class="form-control"/>
+
+					<button ng-click="searchRoute(route)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
+						Search
+					</button>
+			    </div>
+
+				<div ng-hide="searchForm.$valid || searchForm.$pristine">
+				        <div ng-show="searchForm.stopName.$error.required" class="alert alert-danger" role="alert">
+			        	<strong>Error!</strong> Inform street name
+			        </div>
+			        <div ng-show="searchForm.stopName.$error.minlength" class="alert alert-warning" role="alert">
+			        	<strong>Error!</strong> Needs at least 3 letters
+			        </div>
+			        <div ng-show="searchForm.stopName.$error.maxlength" class="alert alert-warning" role="alert">
+			        	<strong>Error!</strong> Maximum 50 letters
+			        </div>
+				</div>
+
+			</form>
+	</div>
+
+	<div class="jumbotron">
+		<div>Routes list for street name: {{route.stopName}}</div>
+		<div ng-show="routes.rows.length <= 0" class="alert alert-info" role="alert">No routes found</div>
+		<div ng-show="routes.rows.length > 0">
+			<table class="table table-bordered" style="background-color: white">
+				<tr style="background-color: silver">
+					<th>
+						<a href="" ng-click="orderByField='routeNumber'; reverseSort = !reverseSort">
+							Route number 
+							<span ng-show="orderByField == 'routeNumber'">
+							 	<span ng-show="!reverseSort">^</span>
+							 	<span ng-show="reverseSort">v</span>
+							</span>
+						</a>
+					</th>
+					<th>
+						<a href="" ng-click="orderByField='routeName'; reverseSort = !reverseSort">
+							Route name 
+							<span ng-show="orderByField == 'routeName'">
+							 	<span ng-show="!reverseSort">^</span>
+							 	<span ng-show="reverseSort">v</span>
+							</span>
+						</a>
+					</th>
+				</tr>
+				<tr ng-repeat="route in routes.rows | orderBy:orderByField:reverseSort">
+					<td><a href="#/route/{{route.id}}">{{route.shortName}}</a></td>
+					<td><a href="#/route/{{route.id}}">{{route.longName}}</a></td>
+				</tr>
+				<tr style="background-color: silver">
+					<td colspan="2" align="left">Total routes found: {{routes.rows.length}}</td>
+				</tr>		
+			</table>
+		</div>
+	</div>
+</div>

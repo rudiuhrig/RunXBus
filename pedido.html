@@ -1,0 +1,93 @@
+<div class="container" style="width: 60%">
+	<h2>{{titulo}}</h2>
+	<div class="jumbotron">
+		<div>Menu</div>
+		<fieldset>
+			<input type="text" ng-model="criterio" placeholder="Busque por descricao ou preco" style="width: 90%">
+		</fieldset>
+		<table class="table table-bordered" style="background-color: white">
+			<tr>
+				<td><a href="" ng-click="ordernarPor('descricao')">Descricao</td>
+				<td><a href="" ng-click="ordernarPor('descricao')">Descricao</a></td>
+				<td><a href="" ng-click="ordernarPor('preco')">Preco</a></th>
+				<td><a href="" ng-click="ordernarPor('descricao')">Detalhes</td>
+				<td><a href="" ng-click="ordernarPor('descricao')">Imagem</td>
+			</tr>
+			<tr ng-repeat="item in items | filter:criterio | orderBy:campo:direcao">
+						<td><a href="#/item/{{item.id}}">{{item.id}}</a></td>
+						<td><a href="#/item/{{item.id}}">{{item.descricao | exclamacao:1}}</a></td>
+						<td><a href="#/item/{{item.id}}">{{item.preco | currency}}</a></td>
+						<td><a href="#/item/{{item.id}}">{{item.detalhes}}</a></td>
+						<td><a href="#/item/{{item.id}}">{{item.imagem}}</a></td>
+			</tr>
+		</table>
+	</div>
+	<div class="jumbotron">
+		<div>Informe o Pedido</div>
+			<form name="pedidoForm">
+			
+				<div class="controls form-inline">
+			    	<input type="number" min="1" ng-model="pedido.quantidade" placeholder="Quantidade" name="quantidade" ng-required="true" ng-minlength="1" ng-maxlength="3" ng-pattern="/\d{1,3}/" class="form-control"/>
+
+			    	<select ng-model="pedido.item" ng-options="item.descricao for item in items" name="item" ng-required="true" class="form-control selectpicker">
+						<option value="">Selecione um item</option>
+					</select>
+
+					<button ng-click="fazerPedido(pedido)" ng-disabled="pedidoForm.$invalid" class="btn btn-lg btn-success">
+						Fazer pedido
+					</button>
+			    </div>
+
+				<div ng-hide="pedidoForm.$valid || pedidoForm.$pristine">
+					<div ng-show="pedidoForm.quantidade.$invalid" class="alert alert-danger" role="alert">
+			        	<strong>Erro!</strong> Quantidade invalida
+			        </div>
+			        <div ng-show="pedidoForm.quantidade.$error.required" class="alert alert-danger" role="alert">
+			        	<strong>Erro!</strong> Informe quantidade
+			        </div>
+			        <div ng-show="pedidoForm.quantidade.$error.minlength" class="alert alert-danger" role="alert">
+			        	<strong>Erro!</strong> Quantidade deve ser no minimo 1 digito
+			        </div>
+			        <div ng-show="pedidoForm.quantidade.$error.maxlength" class="alert alert-danger" role="alert">
+			        	<strong>Erro!</strong> Quantidade deve ser no maximo 3 digito
+			        </div>
+			        <div ng-show="pedidoForm.quantidade.$error.pattern" class="alert alert-danger" role="alert">
+			        	<strong>Erro!</strong> Quantidade dever ser somente numero
+			        </div>
+			        <div ng-show="pedidoForm.item.$invalid" class="alert alert-warning" role="alert">
+			        	<strong>Alerta!</strong> Item invalido
+			        </div>
+			        <div ng-show="pedidoForm.item.$error.required" class="alert alert-info" role="alert">
+			        	<strong>Aviso!</strong> Informe item
+			        </div>
+				</div>
+
+			</form>
+	</div>
+	<div class="jumbotron">
+		<div>Lista de Pedidos</div>
+		<table ng-show="pedidos.length > 0" class="table table-bordered" style="background-color: white">
+			<tr>
+				<th>Descricao do item</th>
+				<th>Quantidade</th>
+				<th>Sub Total</th>
+				<th>Data pedido</th>
+			</tr>
+			<tr ng-repeat="pedido in pedidos">
+				<td>{{pedido.item.descricao}}</td>
+				<td>{{pedido.quantidade}}</td>
+				<td>{{pedido.subTotal | currency}}</td>
+				<td>{{pedido.dataPedido | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+			</tr>		
+		</table>
+	</div>
+	<div class="jumbotron">
+		<div>Totais</div>
+		<table class="table table-bordered" style="background-color: white">
+			<tr>
+				<th>Total do pedido</th>
+				<td>{{total | currency}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
