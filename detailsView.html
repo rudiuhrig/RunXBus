@@ -1,5 +1,5 @@
 <div class="container" style="width: 60%">
-	<h3>Route's details for ROUTE NAME</h3>
+	<h3>{{pageTitle}}</h3>
 
 	<div class="jumbotron">
 		<div>Streets names within the route ROUTE NAME</div>
@@ -31,39 +31,38 @@
 
 	<div class="jumbotron">
 		<div>Timetables for route ROUTE NAME</div>
-		<div ng-show="routeDepartures.rows.length <= 0" class="alert alert-info" role="alert">No routes's stops found</div>
+		<div ng-show="routeDepartures.rows.length <= 0" class="alert alert-info" role="alert">No timetables found</div>
 		<div ng-show="routeDepartures.rows.length > 0">
-			<table class="table table-bordered" style="background-color: white">
-				<tr style="background-color: silver">
-					<th>
-						<a href="" ng-click="orderByFieldDep='departureTime'; reverseSortDep = !reverseSortDep">
-							Time
-							<span ng-show="orderByFieldDep == 'departureTime'">
-							 	<span ng-show="!reverseSortDep">^</span>
-							 	<span ng-show="reverseSortDep">v</span>
-							</span>
-						</a>
-					</th>
-					<th>
-						<a href="" ng-click="orderByFieldDep='departureCalendar'; reverseSortDep = !reverseSortDep">
-							Weekday, saturday or sunday
-							<span ng-show="orderByFieldDep == 'departureCalendar'">
-							 	<span ng-show="!reverseSortDep">^</span>
-							 	<span ng-show="reverseSortDep">v</span>
-							</span>
-						</a>
-					</th>
-				</tr>
-				<tr ng-repeat="departure in routeDepartures.rows | orderBy:orderByFieldDep:reverseSortDep">
-					<td>{{departure.time}}</td>
-					<td>{{departure.calendar}}</td>
-				</tr>
-				<tr style="background-color: silver">
-					<td colspan="2" align="left">Total route's stops found: {{routeDepartures.rows.length}}</td>
-				</tr>		
-			</table>
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{weekdayTimetables.calendar}}
+					<div class="customMarginBottom">
+						<span  ng-repeat="weekdayTime in weekdayTimetables.timetables" class="badge"> {{weekdayTime}} </span>
+					</div>
+					{{totalTimetablesText}}: {{weekdayTimetables.timetables.length}}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{saturdayTimetables.calendar}}
+					<div class="customMarginBottom">
+						<span  ng-repeat="saturdayTime in saturdayTimetables.timetables" class="badge"> {{saturdayTime}} </span>
+					</div>
+					{{totalTimetablesText}}: {{saturdayTimetables.timetables.length}}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{sundayTimetables.calendar}}
+					<div class="customMarginBottom">
+						<span  ng-repeat="sundayTime in sundayTimetables.timetables" class="badge"> {{sundayTime}} </span>
+					</div>
+					{{totalTimetablesText}}: {{sundayTimetables.timetables.length}}
+				</li>
+			</ul>
 		</div>
 		</br>
 		<a href="file:///D:/rudi.neto/Nexxera/CursoAngulasJS/projetos/pedidos/index.html#/pedido">Voltar aos pedidos</a>
 	</div>
+
 </div>

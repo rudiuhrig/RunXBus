@@ -3,36 +3,34 @@
 
 	<div class="jumbotron">
 		<div>Inform street name</div>
-			<form name="searchForm">
-			
-				<div class="controls form-inline">
-					<input type="text" 
-						placeholder="Search by street name and tap search button" style="width: 50%"
-						ng-model="route.stopName"
-						name="stopName"
-						ng-required="true" 
-						ng-minlength="3" 
-						ng-maxlength="50" 
-						class="form-control"/>
+		<form name="searchForm">
+			<div class="controls form-inline">
+				<input type="text" 
+					placeholder="Search by street name and tap search button" style="width: 50%"
+					ng-model="route.stopName"
+					name="stopName"
+					ng-required="true" 
+					ng-minlength="3" 
+					ng-maxlength="50" 
+					class="form-control"/>
 
-					<button ng-click="searchRoute(route)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
-						Search
-					</button>
-			    </div>
+				<button ng-click="searchRoute(route)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
+					Search
+				</button>
+		    </div>
 
-				<div ng-hide="searchForm.$valid || searchForm.$pristine">
-				        <div ng-show="searchForm.stopName.$error.required" class="alert alert-danger" role="alert">
-			        	<strong>Error!</strong> Inform street name
-			        </div>
-			        <div ng-show="searchForm.stopName.$error.minlength" class="alert alert-warning" role="alert">
-			        	<strong>Error!</strong> Needs at least 3 letters
-			        </div>
-			        <div ng-show="searchForm.stopName.$error.maxlength" class="alert alert-warning" role="alert">
-			        	<strong>Error!</strong> Maximum 50 letters
-			        </div>
-				</div>
-
-			</form>
+			<div ng-hide="searchForm.$valid || searchForm.$pristine">
+			        <div ng-show="searchForm.stopName.$error.required" class="alert alert-danger" role="alert">
+		        	<strong>Error!</strong> Inform street name
+		        </div>
+		        <div ng-show="searchForm.stopName.$error.minlength" class="alert alert-warning" role="alert">
+		        	<strong>Error!</strong> Needs at least 3 letters
+		        </div>
+		        <div ng-show="searchForm.stopName.$error.maxlength" class="alert alert-warning" role="alert">
+		        	<strong>Error!</strong> Maximum 50 letters
+		        </div>
+			</div>
+		</form>
 	</div>
 
 	<div class="jumbotron">
@@ -70,4 +68,5 @@
 			</table>
 		</div>
 	</div>
+	
 </div>

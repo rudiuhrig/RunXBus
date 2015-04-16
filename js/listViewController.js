@@ -1,13 +1,11 @@
 app.controller("listViewController", function ($scope, $http, runxbusAPI) {
-	$scope.appTitle = 'Floripa - Bus informations';
-	$scope.routes   = {
-		"rows": [],
-    	"rowsAffected": 0
-	};
+	//Initialize variables
+	$scope.appTitle     = 'Floripa - Bus informations';
+	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
 	$scope.orderByField = 'routeName';
 	$scope.reverseSort  = false;
 
-	$scope.items     	= [];
+	$scope.items = [];
 
 	$scope.searchRoute = function (route) {
 		//Prepare route object to works with rest json
