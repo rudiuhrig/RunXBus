@@ -29,12 +29,12 @@ app.controller("listViewController", function ($scope, $http, runxbusAPI, Persis
 		$scope.searchForm.$setPristine();
 	};
 
-	$scope.loadPreviousRoutes = function() {
+	$scope.loadPreviousSearch = function() {
 		var previousRoutes = PersistentThings.getThings();
 		if (previousRoutes !== null) {
 			$scope.routes = previousRoutes;
 		}
 	};
 
-	$scope.loadPreviousRoutes();
+	$scope.loadPreviousSearch();
 });
