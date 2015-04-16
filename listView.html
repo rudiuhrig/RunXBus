@@ -37,8 +37,8 @@
 		<div>Routes list for street name: {{route.stopName}}</div>
 		<div ng-show="routes.rows.length <= 0" class="alert alert-info" role="alert">No routes found</div>
 		<div ng-show="routes.rows.length > 0">
-			<table class="table table-bordered" style="background-color: white">
-				<tr style="background-color: silver">
+			<table class="table table-bordered customWhiteBG">
+				<tr class="customSilverBG">
 					<th>
 						<a href="" ng-click="orderByField='routeNumber'; reverseSort = !reverseSort">
 							Route number 
@@ -62,11 +62,11 @@
 					<td><a href="#/route/{{route.id}}">{{route.shortName}}</a></td>
 					<td><a href="#/route/{{route.id}}">{{route.longName}}</a></td>
 				</tr>
-				<tr style="background-color: silver">
+				<tr class="customSilverBG">
 					<td colspan="2" align="left">Total routes found: {{routes.rows.length}}</td>
 				</tr>		
 			</table>
 		</div>
 	</div>
-	
+
 </div>

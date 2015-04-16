@@ -5,8 +5,8 @@
 		<div>Streets names within the route ROUTE NAME</div>
 		<div ng-show="routeStops.rows.length <= 0" class="alert alert-info" role="alert">No routes's stops found</div>
 		<div ng-show="routeStops.rows.length > 0">
-			<table class="table table-bordered" style="background-color: white">
-				<tr style="background-color: silver">
+			<table class="table table-bordered customWhiteBG">
+				<tr class="customSilverBG">
 					<th>
 						<a href="" ng-click="orderByField='stopName'; reverseSort = !reverseSort">
 							Streets names
@@ -20,7 +20,7 @@
 				<tr ng-repeat="stop in routeStops.rows | orderBy:orderByField:reverseSort">
 					<td>{{stop.name}}</td>
 				</tr>
-				<tr style="background-color: silver">
+				<tr class="customSilverBG">
 					<td colspan="2" align="left">Total route's stops found: {{routeStops.rows.length}}</td>
 				</tr>		
 			</table>
