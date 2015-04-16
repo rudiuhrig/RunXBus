@@ -16,30 +16,9 @@ app.factory("runxbusAPI", function($http) {
 		return $http.post("https://api.appglu.com/v1/queries/findDeparturesByRouteId/run", routeParams);
 	};
 
-	var _carregarItems = function() {
-		return $http.get("https://devweb.nexxera.com/pedidosweb/cardapio");
-	};
-
-	var _carregarPedidos = function() {
-		return $http.get("https://devweb.nexxera.com/pedidosweb/pedidos");
-	};
-
-	var _salvarPedido = function(pedido) {
-		return $http.post("https://devweb.nexxera.com/pedidosweb/pedidos", pedido);
-	};
-
-	var _carregarItem = function(id) {
-		return $http.get("https://devweb.nexxera.com/pedidosweb/item/" + id);
-	};
-
 	return {
 		searchRoutes: _searchRoutes,
 		loadRouteStops: _loadRouteStops,
-		loadRouteDepartures: _loadRouteDepartures,
-
-		carregarPedidos: _carregarPedidos,
-		salvarPedido: _salvarPedido,
-		carregarItems: _carregarItems,
-		carregarItem: _carregarItem
+		loadRouteDepartures: _loadRouteDepartures
 	}
 });
