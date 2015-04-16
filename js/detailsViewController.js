@@ -58,7 +58,7 @@ app.controller("detailsViewController", function ($scope, $http, runxbusAPI, $ro
 			        break;
 			}
 		});
-	}
+	};
 
 	//Loads for details
 	$scope.loadRouteStops($routeParams.id);

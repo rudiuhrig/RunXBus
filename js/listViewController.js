@@ -1,4 +1,4 @@
-app.controller("listViewController", function ($scope, $http, runxbusAPI) {
+app.controller("listViewController", function ($scope, $http, runxbusAPI, PersistentThings) {
 	//Initialize variables
 	$scope.appTitle     = 'Floripa - Bus informations';
 	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
@@ -17,7 +17,8 @@ app.controller("listViewController", function ($scope, $http, runxbusAPI) {
 
 			$scope.routes = data;
 
-			//$scope.carregarPedidos();
+			//Store data for back to this page
+			PersistentThings.persistThings(data);
 
 		}).error(function(data, status) {
 			console.log(data);
@@ -27,4 +28,13 @@ app.controller("listViewController", function ($scope, $http, runxbusAPI) {
 		//Reset the state of form fields tu future validations
 		$scope.searchForm.$setPristine();
 	};
+
+	$scope.loadPreviousRoutes = function() {
+		var previousRoutes = PersistentThings.getThings();
+		if (previousRoutes !== null) {
+			$scope.routes = previousRoutes;
+		}
+	};
+
+	$scope.loadPreviousRoutes();
 });
