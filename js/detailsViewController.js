@@ -1,4 +1,4 @@
-app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$routeParams', '$http', function ($scope, RunxBusAPI, PersistenceService, $routeParams, $http) {
+app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$routeParams', function ($scope, RunxBusAPI, PersistenceService, $routeParams) {
 	//Initialize variables
 	$scope.pageTitle		   = "Route's details for ";
 	$scope.pageRouteName	   = null;

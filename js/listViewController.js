@@ -1,4 +1,4 @@
-app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$http', function ($scope, RunxBusAPI, PersistenceService, $http) {
+app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', function ($scope, RunxBusAPI, PersistenceService) {
 	//Initialize variables
 	$scope.appTitle     = 'Floripa - Bus informations';
 	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
