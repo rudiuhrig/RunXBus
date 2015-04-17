@@ -2,23 +2,15 @@
 	<h3>{{pageTitle}}</h3>
 
 	<div class="jumbotron">
-		<div>Streets names within the route {{pageRouteName}}</div>
+		<div>Streets within the route {{pageRouteName}}</div>
 		<loading class="spinner" ng-show="loadingRouteStops"></loading>
 		<div ng-show="routeStopsNotFound" class="alert alert-info" role="alert">No routes's stops found</div>
 		<div ng-show="routeStops.rows.length > 0">
 			<table class="table table-bordered customWhiteBG">
 				<tr class="customSilverBG">
-					<th>
-						<a href="" ng-click="orderByField='stopName'; reverseSort = !reverseSort">
-							Streets names
-							<span ng-show="orderByField == 'stopName'">
-							 	<span ng-show="!reverseSort">^</span>
-							 	<span ng-show="reverseSort">v</span>
-							</span>
-						</a>
-					</th>
+					<th>Street names</th>
 				</tr>
-				<tr ng-repeat="stop in routeStops.rows | orderBy:orderByField:reverseSort">
+				<tr ng-repeat="stop in routeStops.rows">
 					<td>{{stop.name}}</td>
 				</tr>
 				<tr class="customSilverBG">
@@ -27,7 +19,7 @@
 			</table>
 		</div>
 		</br>
-		<a class="btn btn-primary btn-lg" href="#" role="button">Back</a>
+		<a class="btn btn-lg btn-success" href="#" role="button">Back</a>
 	</div>
 
 	<div class="jumbotron">
@@ -64,7 +56,7 @@
 			</ul>
 		</div>
 		</br>
-		<a class="btn btn-primary btn-lg" href="#" role="button">Back</a>
+		<a class="btn btn-lg btn-success" href="#" role="button">Back</a>
 	</div>
 
 </div>

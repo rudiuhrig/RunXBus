@@ -14,8 +14,6 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 	$scope.weekdayTimetables   = { "calendar": 'Weekday', "timetables": [] };
 	$scope.saturdayTimetables  = { "calendar": 'Saturday', "timetables": [] };
 	$scope.sundayTimetables    = { "calendar": 'Sunday', "timetables": [] };
-	$scope.orderByField        = 'routeName';
-	$scope.reverseSort         = false;
 	$scope.totalTimetablesText = "Total timetables found";
 	$scope.loadingRouteStops   = false;
 	$scope.loadingRouteDept    = false;

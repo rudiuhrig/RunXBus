@@ -35,26 +35,10 @@
 		<div ng-show="routes.rows.length > 0">
 			<table class="table table-bordered customWhiteBG">
 				<tr class="customSilverBG">
-					<th>
-						<a href="" ng-click="orderByField='routeNumber'; reverseSort = !reverseSort">
-							Route number 
-							<span ng-show="orderByField == 'routeNumber'">
-							 	<span ng-show="!reverseSort">^</span>
-							 	<span ng-show="reverseSort">v</span>
-							</span>
-						</a>
-					</th>
-					<th>
-						<a href="" ng-click="orderByField='routeName'; reverseSort = !reverseSort">
-							Route name 
-							<span ng-show="orderByField == 'routeName'">
-							 	<span ng-show="!reverseSort">^</span>
-							 	<span ng-show="reverseSort">v</span>
-							</span>
-						</a>
-					</th>
+					<th>Route number</th>
+					<th>Route name</th>
 				</tr>
-				<tr ng-repeat="route in routes.rows | orderBy:orderByField:reverseSort">
+				<tr ng-repeat="route in routes.rows">
 					<td><a href="#/route/{{route.id}}" ng-click="setFilters(route)">{{route.shortName}}</a></td>
 					<td><a href="#/route/{{route.id}}" ng-click="setFilters(route)">{{route.longName}}</a></td>
 				</tr>

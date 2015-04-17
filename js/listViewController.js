@@ -9,8 +9,6 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 	//Initialize variables
 	$scope.appTitle       = 'Floripa - Bus informations';
 	$scope.routes         = { "rows": [],	"rowsAffected": 0 };
-	$scope.orderByField   = 'routeName';
-	$scope.reverseSort    = false;
 	$scope.loading        = false;
 	$scope.routesNotFound = false;
 
