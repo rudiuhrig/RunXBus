@@ -4,8 +4,10 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
 	$scope.orderByField = 'routeName';
 	$scope.reverseSort  = false;
+	$scope.loading      = false;
 
 	$scope.searchRoute = function(stopName) {
+		$scope.loading   = true;
 		var stringSearch = "%" + stopName + "%";
 		RunxBusAPI.searchRoutes(stringSearch).success(function(data, status) {
 			$scope.routes = data;
@@ -15,6 +17,8 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 
 		}).error(function(data, status) {
 			console.log(data);
+		}).finally(function() {
+			$scope.loading = false;
 		});
 
 		//Reset the state of form fields tu future validations

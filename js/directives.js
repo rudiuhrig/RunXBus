@@ -26,3 +26,17 @@ app.directive("footer", function() {
 		}
 	};
 });
+/*
+ Directive for loading html
+*/
+app.directive("loading", function() {
+	return {
+		templateUrl: "loading.html",
+		replace: true,
+		restrict: "EA",
+		transclude: true,
+		scope: {
+			titulo: "@"
+		}
+	};
+});
