@@ -5,10 +5,10 @@ app.factory("RunxBusAPI", ['$http', function($http) {
 	$http.defaults.headers.post['X-AppGlu-Environment'] = 'staging';
 
 	//Prepare params to works with rest json
-	var _prepareJsonPost = function(key, value) {
+	var _prepareJsonPost = function(keyParam, valueParam) {
         var routeJsonPost = {
                     params: {
-                        key: value
+                        [keyParam]: valueParam
                     }
                 };
         return routeJsonPost;

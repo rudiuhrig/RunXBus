@@ -1,4 +1,4 @@
-app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$routeParams', function ($scope, RunxBusAPI, PersistenceService, $routeParams) {
+app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$routeParams', '$http', function ($scope, RunxBusAPI, PersistenceService, $routeParams, $http) {
 	//Initialize variables
 	$scope.pageTitle		   = "Route's details for ";
 	$scope.pageRouteName	   = null;
@@ -18,18 +18,21 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 			$scope.pageTitle = $scope.pageTitle + filters.clickedRoute;
 			$scope.pageRouteName = filters.clickedRoute;
 		}
+
+		$scope.loadRouteStops($routeParams.id);
+		$scope.loadRouteDepartures($routeParams.id);
 	};
 
-	$scope.loadRouteStops = function(id) {
-		RunxBusAPI.loadRouteStops(id).success(function(data, status) {
+	$scope.loadRouteStops = function(routeId) {
+		RunxBusAPI.loadRouteStops(routeId).success(function(data, status) {
 			$scope.routeStops =  data;
 		}).error(function(data, status) {
 			console.log(data);
 		});
 	};
 
-	$scope.loadRouteDepartures = function(id) {
-		RunxBusAPI.loadRouteDepartures(id).success(function(data, status) {
+	$scope.loadRouteDepartures = function(routeId) {
+		RunxBusAPI.loadRouteDepartures(routeId).success(function(data, status) {
 			$scope.routeDepartures =  data;
 			$scope.organizeTimetablesByTypeOfDay();
 		}).error(function(data, status) {
@@ -56,6 +59,4 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 
 	//Loads for details
 	$scope.loadPageDetails();
-	$scope.loadRouteStops($routeParams.id);
-	$scope.loadRouteDepartures($routeParams.id);
 }]);

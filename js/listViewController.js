@@ -1,16 +1,13 @@
-app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', function ($scope, RunxBusAPI, PersistenceService) {
+app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$http', function ($scope, RunxBusAPI, PersistenceService, $http) {
 	//Initialize variables
 	$scope.appTitle     = 'Floripa - Bus informations';
 	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
 	$scope.orderByField = 'routeName';
 	$scope.reverseSort  = false;
 
-	$scope.searchRoute = function (stopName) {
-
+	$scope.searchRoute = function(stopName) {
 		var stringSearch = "%" + stopName + "%";
-
 		RunxBusAPI.searchRoutes(stringSearch).success(function(data, status) {
-
 			$scope.routes = data;
 
 			//Store data for back to this page
@@ -19,7 +16,6 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 		}).error(function(data, status) {
 			console.log(data);
 		});
-
 
 		//Reset the state of form fields tu future validations
 		$scope.searchForm.$setPristine();
