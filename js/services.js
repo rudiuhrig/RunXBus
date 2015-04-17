@@ -1,18 +1,18 @@
 /*
 * PersistentThings: service to store data across the application
 */
-app.factory('PersistentThings', function() {
-    var persistedRecipes = null;
+app.factory('PersistenceService', function() {
+    var persistedData = null;
 
     return {
-        persistThings: function(recipes) {
-            persistedRecipes = recipes;
+        persist: function(data) {
+            persistedData = data;
         },
         clear: function() {
-            persistedRecipes = null;
+            persistedData = null;
         },
-        getThings: function() {
-            return persistedRecipes; 
+        get: function() {
+            return persistedData; 
         }
     };
 });

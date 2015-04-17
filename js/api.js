@@ -1,4 +1,4 @@
-app.factory("runxbusAPI", function($http) {
+app.factory("RunxBusAPI", function($http) {
 
 	//Prepare Basic Auth and custom header
 	$http.defaults.headers.common['Authorization'] = 'Basic V0tENE43WU1BMXVpTThWOkR0ZFR0ek1MUWxBMGhrMkMxWWk1cEx5VklsQVE2OA==';

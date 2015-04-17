@@ -1,4 +1,4 @@
-app.controller("detailsViewController", function ($scope, $http, runxbusAPI, $routeParams) {
+app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $routeParams) {
 	//Initialize variables
 	$scope.pageTitle		   = "Route's details for ROUTE NAME";
 	$scope.routeStops 		   = { "rows": [], "rowsAffected": 0 };
@@ -18,7 +18,7 @@ app.controller("detailsViewController", function ($scope, $http, runxbusAPI, $ro
 								}
 							};
 
-		runxbusAPI.loadRouteStops(routeJsonPost).success(function(data, status) {
+		RunxBusAPI.loadRouteStops(routeJsonPost).success(function(data, status) {
 			$scope.routeStops =  data;
 		}).error(function(data, status) {
 			console.log(data);
@@ -33,7 +33,7 @@ app.controller("detailsViewController", function ($scope, $http, runxbusAPI, $ro
 								}
 							};
 
-		runxbusAPI.loadRouteDepartures(routeJsonPost).success(function(data, status) {
+		RunxBusAPI.loadRouteDepartures(routeJsonPost).success(function(data, status) {
 
 			$scope.routeDepartures =  data;
 			$scope.organizeTimetablesByTypeOfDay();

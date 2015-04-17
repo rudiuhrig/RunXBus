@@ -1,4 +1,4 @@
-app.controller("listViewController", function ($scope, $http, runxbusAPI, PersistentThings) {
+app.controller("listViewController", function ($scope, $http, RunxBusAPI, PersistenceService) {
 	//Initialize variables
 	$scope.appTitle     = 'Floripa - Bus informations';
 	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
@@ -13,12 +13,12 @@ app.controller("listViewController", function ($scope, $http, runxbusAPI, Persis
 								}
 							};
 
-		runxbusAPI.searchRoutes(routeJsonPost).success(function(data, status) {
+		RunxBusAPI.searchRoutes(routeJsonPost).success(function(data, status) {
 
 			$scope.routes = data;
 
 			//Store data for back to this page
-			PersistentThings.persistThings(data);
+			PersistenceService.persist(data);
 
 		}).error(function(data, status) {
 			console.log(data);
@@ -30,7 +30,8 @@ app.controller("listViewController", function ($scope, $http, runxbusAPI, Persis
 	};
 
 	$scope.loadPreviousSearch = function() {
-		var previousRoutes = PersistentThings.getThings();
+		//Load stored data for this page
+		var previousRoutes = PersistenceService.get();
 		if (previousRoutes !== null) {
 			$scope.routes = previousRoutes;
 		}
