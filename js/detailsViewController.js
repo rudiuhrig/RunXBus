@@ -1,6 +1,6 @@
-app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $routeParams, PersistenceService) {
+app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$routeParams', function ($scope, RunxBusAPI, PersistenceService, $routeParams) {
 	//Initialize variables
-	$scope.pageTitle		   = "Route's details for ROUTE NAME";
+	$scope.pageTitle		   = "Route's details for ";
 	$scope.pageRouteName	   = null;
 	$scope.routeStops 		   = { "rows": [], "rowsAffected": 0 };
 	$scope.routeDepartures     = { "rows": [], "rowsAffected": 0 };
@@ -15,19 +15,13 @@ app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $ro
 		//Load stored data for this page
 		var filters = PersistenceService.getFilters();
 		if (filters !== null && filters.clickedRoute !== null) {
+			$scope.pageTitle = $scope.pageTitle + filters.clickedRoute;
 			$scope.pageRouteName = filters.clickedRoute;
 		}
 	};
 
 	$scope.loadRouteStops = function(id) {
-		//Prepare route object to works with rest json
-		var routeJsonPost = {
-								params: {
-									routeId: id
-								}
-							};
-
-		RunxBusAPI.loadRouteStops(routeJsonPost).success(function(data, status) {
+		RunxBusAPI.loadRouteStops(id).success(function(data, status) {
 			$scope.routeStops =  data;
 		}).error(function(data, status) {
 			console.log(data);
@@ -35,18 +29,9 @@ app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $ro
 	};
 
 	$scope.loadRouteDepartures = function(id) {
-		//Prepare route object to works with rest json
-		var routeJsonPost = {
-								params: {
-									routeId: id
-								}
-							};
-
-		RunxBusAPI.loadRouteDepartures(routeJsonPost).success(function(data, status) {
-
+		RunxBusAPI.loadRouteDepartures(id).success(function(data, status) {
 			$scope.routeDepartures =  data;
 			$scope.organizeTimetablesByTypeOfDay();
-
 		}).error(function(data, status) {
 			console.log(data);
 		});
@@ -73,4 +58,4 @@ app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $ro
 	$scope.loadPageDetails();
 	$scope.loadRouteStops($routeParams.id);
 	$scope.loadRouteDepartures($routeParams.id);
-});
+}]);

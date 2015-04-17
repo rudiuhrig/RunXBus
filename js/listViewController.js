@@ -1,5 +1,4 @@
-app.controller("listViewController", function ($scope, $http, RunxBusAPI, PersistenceService) {
-	//@TODO: .controller('CancelUpdateController', ['$scope', function($scope) {
+app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', function ($scope, RunxBusAPI, PersistenceService) {
 	//Initialize variables
 	$scope.appTitle     = 'Floripa - Bus informations';
 	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
@@ -10,14 +9,7 @@ app.controller("listViewController", function ($scope, $http, RunxBusAPI, Persis
 
 		var stringSearch = "%" + stopName + "%";
 
-		//Prepare route object to works with rest json
-		var routeJsonPost = {
-								params: {
-									stopName: stringSearch
-								}
-							};
-
-		RunxBusAPI.searchRoutes(routeJsonPost).success(function(data, status) {
+		RunxBusAPI.searchRoutes(stringSearch).success(function(data, status) {
 
 			$scope.routes = data;
 
@@ -55,4 +47,4 @@ app.controller("listViewController", function ($scope, $http, RunxBusAPI, Persis
 	};
 
 	$scope.loadPreviousSearch();
-});
+}]);
