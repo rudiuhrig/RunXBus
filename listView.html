@@ -30,7 +30,7 @@
 	<div class="jumbotron">
 		<div>Routes list for street name: {{stopName}}</div>
 		<loading class="spinner" ng-show="loading"></loading>
-		<div ng-show="routes.rows.length <= 0 && stopName" class="alert alert-info" role="alert">No routes found</div>
+		<div ng-show="routesNotFound" class="alert alert-info" role="alert">No routes found</div>
 		<div ng-show="routes.rows.length > 0">
 			<table class="table table-bordered customWhiteBG">
 				<tr class="customSilverBG">

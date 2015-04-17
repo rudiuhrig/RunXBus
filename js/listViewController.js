@@ -1,13 +1,15 @@
 app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', function ($scope, RunxBusAPI, PersistenceService) {
 	//Initialize variables
-	$scope.appTitle     = 'Floripa - Bus informations';
-	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
-	$scope.orderByField = 'routeName';
-	$scope.reverseSort  = false;
-	$scope.loading      = false;
+	$scope.appTitle       = 'Floripa - Bus informations';
+	$scope.routes         = { "rows": [],	"rowsAffected": 0 };
+	$scope.orderByField   = 'routeName';
+	$scope.reverseSort    = false;
+	$scope.loading        = false;
+	$scope.routesNotFound = false;
 
 	$scope.searchRoute = function(stopName) {
 		$scope.loading   = true;
+
 		var stringSearch = "%" + stopName + "%";
 		RunxBusAPI.searchRoutes(stringSearch).success(function(data, status) {
 			$scope.routes = data;
@@ -15,6 +17,9 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 			//Store data for back to this page
 			PersistenceService.persist(data);
 
+			if (data.rows.length <= 0) {
+				$scope.routesNotFound = true;
+			}
 		}).error(function(data, status) {
 			console.log(data);
 		}).finally(function() {
@@ -31,7 +36,7 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 							  'clickedRoute': clickedRoute.shortName + " - " + clickedRoute.longName 
 							};
 		PersistenceService.persistFilters(searchFilters);
-	}
+	};
 
 	$scope.loadPreviousSearch = function() {
 		//Load stored data for this page
