@@ -1,6 +1,15 @@
-/*
- Directive for menu html
-*/
+/**
+ * Directives for this app 
+ * @project RunXBus
+ * @author Rudi Uhrig Neto [rudi.uhrig@gmail.com]
+ * @since 17/04/2015
+ * @copyright Rudi Uhrig Neto 2015
+ */
+
+/**
+ * Directive for menu html
+ * @return: Object with html to be rendered
+ */
 app.directive("menu", function() {
 	return {
 		templateUrl: "menu.html",
@@ -12,9 +21,11 @@ app.directive("menu", function() {
 		}
 	};
 });
-/*
- Directive for footer html
-*/
+
+/**
+ * Directive for footer html
+ * @return: Object with html to be rendered
+ */
 app.directive("footer", function() {
 	return {
 		templateUrl: "footer.html",
@@ -26,9 +37,11 @@ app.directive("footer", function() {
 		}
 	};
 });
-/*
- Directive for loading html
-*/
+
+/**
+ * Directive for loading html
+ * @return: Object with html to be rendered
+ */
 app.directive("loading", function() {
 	return {
 		templateUrl: "loading.html",

@@ -1,3 +1,10 @@
+/**
+ * Controller to manipulate the details view 
+ * @project RunXBus
+ * @author Rudi Uhrig Neto [rudi.uhrig@gmail.com]
+ * @since 17/04/2015
+ * @copyright Rudi Uhrig Neto 2015
+ */
 app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceService', '$routeParams', function ($scope, RunxBusAPI, PersistenceService, $routeParams) {
 	//Initialize variables
 	$scope.pageTitle		   = "Route's details for ";
@@ -15,8 +22,11 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 	$scope.routeStopsNotFound  = false;
 	$scope.routeDeptNotFound   = false;
 
+	/**
+	 * Load stored data and details for this page
+	 * @return: void
+	 */
 	$scope.loadPageDetails = function() {
-		//Load stored data for this page
 		var filters = PersistenceService.getFilters();
 		if (filters !== null && filters.clickedRoute !== null) {
 			$scope.pageTitle = $scope.pageTitle + filters.clickedRoute;
@@ -27,6 +37,11 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 		$scope.loadRouteDepartures($routeParams.id);
 	};
 
+	/**
+	 * Perform the searching route stops by routeId on RunxBusAPI
+	 * @param {int} routeId
+	 * @return: void
+	 */
 	$scope.loadRouteStops = function(routeId) {
 		$scope.loadingRouteStops  = true;
 		$scope.routeStopsNotFound = false;
@@ -44,6 +59,12 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 		});
 	};
 
+	/**
+	 * Perform the searching route departures by routeId on RunxBusAPI
+	 * and organize result in timetables
+	 * @param {int} routeId
+	 * @return: void
+	 */
 	$scope.loadRouteDepartures = function(routeId) {
 		$scope.loadingRouteDept  = true;
 		$scope.routeDeptNotFound = false;
@@ -62,9 +83,14 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 		});
 	};
 
+	/**
+	 * Organize results in timetables by tipe of the day -
+	 * weekday, saturday and sunday
+	 * @return: void
+	 */
 	$scope.organizeTimetablesByTypeOfDay = function() {
-		//Bind timetables in arrays	
 		angular.forEach($scope.routeDepartures.rows, function(value, key) {
+			//Bind timetables in arrays	
    			switch (value.calendar) {
 			    case 'WEEKDAY':
 			        $scope.weekdayTimetables.timetables.push(value.time);
@@ -79,6 +105,5 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 		});
 	};
 
-	//Loads for details
 	$scope.loadPageDetails();
 }]);

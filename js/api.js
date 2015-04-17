@@ -1,8 +1,9 @@
 /**
- * API methods for restful services 
+ * API methods for restful web services 
  * @project RunXBus
- * @author Rudi Uhrig Neto
+ * @author Rudi Uhrig Neto [rudi.uhrig@gmail.com]
  * @since 17/04/2015
+ * @copyright Rudi Uhrig Neto 2015
  */
 app.factory("RunxBusAPI", ['$http', function($http) {
 

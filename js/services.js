@@ -1,6 +1,10 @@
-/*
-* PersistentThings: service to store data across the application
-*/
+/**
+ * PersistenceService: service to store data across the application 
+ * @project RunXBus
+ * @author Rudi Uhrig Neto [rudi.uhrig@gmail.com]
+ * @since 17/04/2015
+ * @copyright Rudi Uhrig Neto 2015
+ */
 app.factory('PersistenceService', function() {
     var persistedData    = null;
     var persistedFilters = null;
