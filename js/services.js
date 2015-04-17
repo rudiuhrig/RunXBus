@@ -2,7 +2,8 @@
 * PersistentThings: service to store data across the application
 */
 app.factory('PersistenceService', function() {
-    var persistedData = null;
+    var persistedData    = null;
+    var persistedFilters = null;
 
     return {
         persist: function(data) {
@@ -13,6 +14,15 @@ app.factory('PersistenceService', function() {
         },
         get: function() {
             return persistedData; 
+        },
+        persistFilters: function(data) {
+            persistedFilters = data;
+        },
+        clearFilters: function() {
+            persistedFilters = null;
+        },
+        getFilters: function() {
+            return persistedFilters; 
         }
     };
 });

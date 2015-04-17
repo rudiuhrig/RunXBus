@@ -4,37 +4,31 @@
 	<div class="jumbotron">
 		<div>Inform street name</div>
 		<form name="searchForm">
-			<div class="controls form-inline">
-				<input type="text" 
-					placeholder="Search by street name and tap search button" style="width: 50%"
-					ng-model="route.stopName"
-					name="stopName"
-					ng-required="true" 
-					ng-minlength="3" 
-					ng-maxlength="50" 
-					class="form-control"/>
+			<div class="controls form-inline customMarginBottom">
+				<input type="text" class="form-control"	placeholder="Search by street name and tap search button" 
+					ng-model="stopName"	name="stopName"	ng-required="true" ng-minlength="3" ng-maxlength="50"/>
 
-				<button ng-click="searchRoute(route)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
+				<button ng-click="searchRoute(stopName)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
 					Search
 				</button>
 		    </div>
 
 			<div ng-hide="searchForm.$valid || searchForm.$pristine">
 			        <div ng-show="searchForm.stopName.$error.required" class="alert alert-danger" role="alert">
-		        	<strong>Error!</strong> Inform street name
+		        	Please inform street name
 		        </div>
 		        <div ng-show="searchForm.stopName.$error.minlength" class="alert alert-warning" role="alert">
-		        	<strong>Error!</strong> Needs at least 3 letters
+		        	<strong>Warning!</strong> Needs at least 3 letters
 		        </div>
 		        <div ng-show="searchForm.stopName.$error.maxlength" class="alert alert-warning" role="alert">
-		        	<strong>Error!</strong> Maximum 50 letters
+		        	<strong>Warning!</strong> Maximum 50 letters
 		        </div>
 			</div>
 		</form>
 	</div>
 
 	<div class="jumbotron">
-		<div>Routes list for street name: {{route.stopName}}</div>
+		<div>Routes list for street name: {{stopName}}</div>
 		<div ng-show="routes.rows.length <= 0" class="alert alert-info" role="alert">No routes found</div>
 		<div ng-show="routes.rows.length > 0">
 			<table class="table table-bordered customWhiteBG">
@@ -59,8 +53,8 @@
 					</th>
 				</tr>
 				<tr ng-repeat="route in routes.rows | orderBy:orderByField:reverseSort">
-					<td><a href="#/route/{{route.id}}">{{route.shortName}}</a></td>
-					<td><a href="#/route/{{route.id}}">{{route.longName}}</a></td>
+					<td><a href="#/route/{{route.id}}" ng-click="setFilters(route)">{{route.shortName}}</a></td>
+					<td><a href="#/route/{{route.id}}" ng-click="setFilters(route)">{{route.longName}}</a></td>
 				</tr>
 				<tr class="customSilverBG">
 					<td colspan="2" align="left">Total routes found: {{routes.rows.length}}</td>

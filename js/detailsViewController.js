@@ -1,6 +1,7 @@
-app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $routeParams) {
+app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $routeParams, PersistenceService) {
 	//Initialize variables
 	$scope.pageTitle		   = "Route's details for ROUTE NAME";
+	$scope.pageRouteName	   = null;
 	$scope.routeStops 		   = { "rows": [], "rowsAffected": 0 };
 	$scope.routeDepartures     = { "rows": [], "rowsAffected": 0 };
 	$scope.weekdayTimetables   = { "calendar": 'Weekday', "timetables": [] };
@@ -9,6 +10,14 @@ app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $ro
 	$scope.orderByField        = 'routeName';
 	$scope.reverseSort         = false;
 	$scope.totalTimetablesText = "Total timetables found";
+
+	$scope.loadPageDetails = function() {
+		//Load stored data for this page
+		var filters = PersistenceService.getFilters();
+		if (filters !== null && filters.clickedRoute !== null) {
+			$scope.pageRouteName = filters.clickedRoute;
+		}
+	};
 
 	$scope.loadRouteStops = function(id) {
 		//Prepare route object to works with rest json
@@ -61,6 +70,7 @@ app.controller("detailsViewController", function ($scope, $http, RunxBusAPI, $ro
 	};
 
 	//Loads for details
+	$scope.loadPageDetails();
 	$scope.loadRouteStops($routeParams.id);
 	$scope.loadRouteDepartures($routeParams.id);
 });

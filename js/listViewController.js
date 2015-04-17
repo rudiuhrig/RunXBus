@@ -1,15 +1,19 @@
 app.controller("listViewController", function ($scope, $http, RunxBusAPI, PersistenceService) {
+	//@TODO: .controller('CancelUpdateController', ['$scope', function($scope) {
 	//Initialize variables
 	$scope.appTitle     = 'Floripa - Bus informations';
 	$scope.routes       = { "rows": [],	"rowsAffected": 0 };
 	$scope.orderByField = 'routeName';
 	$scope.reverseSort  = false;
 
-	$scope.searchRoute = function (route) {
+	$scope.searchRoute = function (stopName) {
+
+		var stringSearch = "%" + stopName + "%";
+
 		//Prepare route object to works with rest json
 		var routeJsonPost = {
 								params: {
-									stopName: "%" + route.stopName + "%"
+									stopName: stringSearch
 								}
 							};
 
@@ -29,8 +33,21 @@ app.controller("listViewController", function ($scope, $http, RunxBusAPI, Persis
 		$scope.searchForm.$setPristine();
 	};
 
+	$scope.setFilters = function(clickedRoute) {
+		var searchFilters = { 
+							  'searchedStopName': $scope.stopName, 
+							  'clickedRoute': clickedRoute.shortName + " - " + clickedRoute.longName 
+							};
+		PersistenceService.persistFilters(searchFilters);
+	}
+
 	$scope.loadPreviousSearch = function() {
 		//Load stored data for this page
+		var previousStopName = PersistenceService.getFilters();
+		if (previousStopName !== null && ( (previousStopName.searchedStopName !== null) || (previousStopName.searchedStopName !== 'undefined') ) ) {
+			$scope.stopName = previousStopName.searchedStopName;
+		}
+
 		var previousRoutes = PersistenceService.get();
 		if (previousRoutes !== null) {
 			$scope.routes = previousRoutes;
