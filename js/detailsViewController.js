@@ -12,6 +12,8 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 	$scope.totalTimetablesText = "Total timetables found";
 	$scope.loadingRouteStops   = false;
 	$scope.loadingRouteDept    = false;
+	$scope.routeStopsNotFound  = false;
+	$scope.routeDeptNotFound   = false;
 
 	$scope.loadPageDetails = function() {
 		//Load stored data for this page
@@ -26,10 +28,15 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 	};
 
 	$scope.loadRouteStops = function(routeId) {
-		$scope.loadingRouteStops = true;
+		$scope.loadingRouteStops  = true;
+		$scope.routeStopsNotFound = false;
 
 		RunxBusAPI.loadRouteStops(routeId).success(function(data, status) {
 			$scope.routeStops =  data;
+			
+			if (data.rows.length <= 0) {
+				$scope.routeStopsNotFound = true;
+			}
 		}).error(function(data, status) {
 			console.log(data);
 		}).finally(function() {
@@ -38,11 +45,16 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 	};
 
 	$scope.loadRouteDepartures = function(routeId) {
-		$scope.loadingRouteDept = true;
+		$scope.loadingRouteDept  = true;
+		$scope.routeDeptNotFound = false;
 
 		RunxBusAPI.loadRouteDepartures(routeId).success(function(data, status) {
 			$scope.routeDepartures =  data;
 			$scope.organizeTimetablesByTypeOfDay();
+
+			if (data.rows.length <= 0) {
+				$scope.routeDeptNotFound = true;
+			}
 		}).error(function(data, status) {
 			console.log(data);
 		}).finally(function() {

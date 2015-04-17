@@ -4,7 +4,7 @@
 	<div class="jumbotron">
 		<div>Streets names within the route {{pageRouteName}}</div>
 		<loading class="spinner" ng-show="loadingRouteStops"></loading>
-		<div ng-show="routeStops.rows.length <= 0" class="alert alert-info" role="alert">No routes's stops found</div>
+		<div ng-show="routeStopsNotFound" class="alert alert-info" role="alert">No routes's stops found</div>
 		<div ng-show="routeStops.rows.length > 0">
 			<table class="table table-bordered customWhiteBG">
 				<tr class="customSilverBG">
@@ -33,7 +33,7 @@
 	<div class="jumbotron">
 		<div>Timetables for route {{pageRouteName}}</div>
 		<loading class="spinner" ng-show="loadingRouteDept"></loading>
-		<div ng-show="routeDepartures.rows.length <= 0" class="alert alert-info" role="alert">No timetables found</div>
+		<div ng-show="routeDeptNotFound" class="alert alert-info" role="alert">No timetables found</div>
 		<div ng-show="routeDepartures.rows.length > 0">
 			<ul class="list-group">
 				<li class="list-group-item">

@@ -8,7 +8,8 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 	$scope.routesNotFound = false;
 
 	$scope.searchRoute = function(stopName) {
-		$scope.loading   = true;
+		$scope.loading 		  = true;
+		$scope.routesNotFound = false;
 
 		var stringSearch = "%" + stopName + "%";
 		RunxBusAPI.searchRoutes(stringSearch).success(function(data, status) {
