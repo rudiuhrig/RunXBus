@@ -33,16 +33,17 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 
 	$scope.setFilters = function(clickedRoute) {
 		var searchFilters = { 
-							  'searchedStopName': $scope.stopName, 
-							  'clickedRoute': clickedRoute.shortName + " - " + clickedRoute.longName 
-							};
+			'searchedStopName': $scope.stopName, 
+			'clickedRoute': clickedRoute.shortName + " - " + clickedRoute.longName 
+		};
 		PersistenceService.persistFilters(searchFilters);
 	};
 
 	$scope.loadPreviousSearch = function() {
 		//Load stored data for this page
 		var previousStopName = PersistenceService.getFilters();
-		if (previousStopName !== null && ( (previousStopName.searchedStopName !== null) || (previousStopName.searchedStopName !== 'undefined') ) ) {
+		if (previousStopName !== null && 
+				( (previousStopName.searchedStopName !== null) || (previousStopName.searchedStopName !== 'undefined') ) ) {
 			$scope.stopName = previousStopName.searchedStopName;
 		}
 
