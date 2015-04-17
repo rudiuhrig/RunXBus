@@ -6,7 +6,8 @@
 		<form name="searchForm">
 			<div class="controls form-inline customMarginBottom">
 				<input type="text" class="form-control"	placeholder="Search by street name and tap search button" 
-					ng-model="stopName"	name="stopName"	ng-required="true" ng-minlength="3" ng-maxlength="50"/>
+					ng-model="stopName"	name="stopName"	ng-required="true" ng-minlength="3" ng-maxlength="50" 
+					ng-change="routes.rows = []"/>
 
 				<button ng-click="searchRoute(stopName)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
 					Search
