@@ -21,6 +21,7 @@ Important App Files
 * www/css/bootstrap.min.css 
 * www/css/custom.css
 * www/libs/angular-1.2.22/*.*
+* screenshots/*.*
 
 Info and Run
 ------------------------------
@@ -28,3 +29,4 @@ This application runs in the web browser.
 It is based in HTML5, CSS3 and JavaScript powered by AngularJS and based on Restful Webservices.
 You can just download the files and run index.html from you mashine.
 OBS.: At momment this app is compatible only in Firefox browser.
+See the screenshots to check the app frontend.
