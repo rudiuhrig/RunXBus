@@ -27,6 +27,6 @@ Info and Run
 ------------------------------
 This application runs in the web browser. 
 It is based in HTML5, CSS3 and JavaScript powered by AngularJS and based on Restful Webservices.
-You can just download the files and run index.html from you mashine.
+You can just download the files and run index.html from your machine.
 OBS.: At momment this app is compatible only in Firefox browser.
 See the screenshots to check the app frontend.
