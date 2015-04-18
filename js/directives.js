@@ -12,7 +12,7 @@
  */
 app.directive("menu", function() {
 	return {
-		templateUrl: "menu.html",
+		templateUrl: "views/partials/menu.html",
 		replace: true,
 		restrict: "EA",
 		transclude: true,
@@ -28,7 +28,7 @@ app.directive("menu", function() {
  */
 app.directive("footer", function() {
 	return {
-		templateUrl: "footer.html",
+		templateUrl: "views/partials/footer.html",
 		replace: true,
 		restrict: "EA",
 		transclude: true,
@@ -44,7 +44,7 @@ app.directive("footer", function() {
  */
 app.directive("loading", function() {
 	return {
-		templateUrl: "loading.html",
+		templateUrl: "views/partials/loading.html",
 		replace: true,
 		restrict: "EA",
 		transclude: true,

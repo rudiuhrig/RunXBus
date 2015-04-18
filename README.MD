@@ -5,13 +5,12 @@ RunXBus is a simple app which searches some routes and timetables of Florianópo
 
 Important App Files
 ---------------------------
-* detailsView.html
-* footer.html 
-* screenshot.png
 * index.html
-* listView.html
-* loading.html 
-* menu.html
+* views/detailsView.html
+* views/listView.html
+* views/partials/loading.html 
+* views/partials/menu.html
+* views/partials/footer.html 
 * js/api.js
 * js/detailsViewController.js
 * js/directives.js
@@ -21,3 +20,11 @@ Important App Files
 * js/services.js
 * css/bootstrap.min.css 
 * css/custom.css
+* libs/angular-1.2.22/*.*
+
+Info and Run
+------------------------------
+This application runs in the web browser. It is based in HTML5, CSS3 and JavaScript powered by AngularJS.
+AngularJS provide a MVC structure for developing cross-platform mobile applications,
+this projecto is only html and JavaScript.
+You can just download the files and run them from you mashine

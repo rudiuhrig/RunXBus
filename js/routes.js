@@ -13,7 +13,7 @@ app.config(function($routeProvider) {
 	 */
 	$routeProvider.when('/',
 		{
-			templateUrl: 'listView.html', 
+			templateUrl: 'views/listView.html', 
 		 	controller: 'listViewController'
 	    });
 
@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
 	 */
 	$routeProvider.when('/search',
 		{
-			templateUrl: 'listView.html', 
+			templateUrl: 'views/listView.html', 
 		 	controller: 'listViewController'
 	    });
 
@@ -33,7 +33,7 @@ app.config(function($routeProvider) {
 	 */
 	$routeProvider.when('/route/:id',
 		{
-			templateUrl: 'detailsView.html', 
+			templateUrl: 'views/detailsView.html', 
 		 	controller: 'detailsViewController'
 	    });
 });
