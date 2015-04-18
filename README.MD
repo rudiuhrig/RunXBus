@@ -27,4 +27,4 @@ Info and Run
 This application runs in the web browser. It is based in HTML5, CSS3 and JavaScript powered by AngularJS.
 AngularJS provide a MVC structure for developing cross-platform mobile applications,
 this projecto is only html and JavaScript.
-You can just download the files and run them from you mashine
+You can just download the files and run index.html from you mashine
