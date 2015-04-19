@@ -1,0 +1,62 @@
+<div class="container">
+	<h3>{{pageTitle}}</h3>
+
+	<div class="jumbotron">
+		<div>Streets within the route {{pageRouteName}}</div>
+		<loading class="spinner" ng-show="loadingRouteStops"></loading>
+		<div ng-show="routeStopsNotFound" class="alert alert-info" role="alert">No routes's stops found</div>
+		<div ng-show="routeStops.rows.length > 0">
+			<table class="table table-bordered customWhiteBG">
+				<tr class="customSilverBG">
+					<th>Street names</th>
+				</tr>
+				<tr ng-repeat="stop in routeStops.rows">
+					<td>{{stop.name}}</td>
+				</tr>
+				<tr class="customSilverBG">
+					<td colspan="2" align="left">Total route's stops found: {{routeStops.rows.length}}</td>
+				</tr>		
+			</table>
+		</div>
+		</br>
+		<a class="btn btn-lg btn-success" href="#" role="button">Back</a>
+	</div>
+
+	<div class="jumbotron">
+		<div>Timetables for route {{pageRouteName}}</div>
+		<loading class="spinner" ng-show="loadingRouteDept"></loading>
+		<div ng-show="routeDeptNotFound" class="alert alert-info" role="alert">No timetables found</div>
+		<div ng-show="routeDepartures.rows.length > 0">
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{weekdayTimetables.calendar}}
+					<div class="customMarginBottom">
+						<span  ng-repeat="weekdayTime in weekdayTimetables.timetables" class="badge"> {{weekdayTime}} </span>
+					</div>
+					{{totalTimetablesText}}: {{weekdayTimetables.timetables.length}}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{saturdayTimetables.calendar}}
+					<div class="customMarginBottom">
+						<span  ng-repeat="saturdayTime in saturdayTimetables.timetables" class="badge"> {{saturdayTime}} </span>
+					</div>
+					{{totalTimetablesText}}: {{saturdayTimetables.timetables.length}}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">
+					{{sundayTimetables.calendar}}
+					<div class="customMarginBottom">
+						<span  ng-repeat="sundayTime in sundayTimetables.timetables" class="badge"> {{sundayTime}} </span>
+					</div>
+					{{totalTimetablesText}}: {{sundayTimetables.timetables.length}}
+				</li>
+			</ul>
+		</div>
+		</br>
+		<a class="btn btn-lg btn-success" href="#" role="button">Back</a>
+	</div>
+
+</div>

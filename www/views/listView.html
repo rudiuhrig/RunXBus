@@ -1,0 +1,52 @@
+<div class="container">
+	<h2>{{appTitle}}</h2>
+
+	<div class="jumbotron">
+		<div>Inform street name</div>
+		<form name="searchForm">
+			<div class="controls form-inline customMarginBottom">
+				<input type="text" class="form-control"	placeholder="Search by street name and tap search button" 
+					ng-model="stopName"	name="stopName"	ng-required="true" ng-minlength="3" ng-maxlength="50" 
+					ng-change="routes.rows = []"/>
+
+				<button ng-click="searchRoute(stopName)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
+					Search
+				</button>
+		    </div>
+
+			<div ng-hide="searchForm.$valid || searchForm.$pristine">
+			        <div ng-show="searchForm.stopName.$error.required" class="alert alert-danger" role="alert">
+		        	Please inform street name
+		        </div>
+		        <div ng-show="searchForm.stopName.$error.minlength" class="alert alert-warning" role="alert">
+		        	<strong>Warning!</strong> Needs at least 3 letters
+		        </div>
+		        <div ng-show="searchForm.stopName.$error.maxlength" class="alert alert-warning" role="alert">
+		        	<strong>Warning!</strong> Maximum 50 letters
+		        </div>
+			</div>
+		</form>
+	</div>
+
+	<div class="jumbotron">
+		<div>Routes list for street name: {{stopName}}</div>
+		<loading class="spinner" ng-show="loading"></loading>
+		<div ng-show="routesNotFound" class="alert alert-info" role="alert">No routes found</div>
+		<div ng-show="routes.rows.length > 0">
+			<table class="table table-bordered customWhiteBG">
+				<tr class="customSilverBG">
+					<th>Route number</th>
+					<th>Route name</th>
+				</tr>
+				<tr ng-repeat="route in routes.rows">
+					<td><a href="#/route/{{route.id}}" ng-click="setFilters(route)">{{route.shortName}}</a></td>
+					<td><a href="#/route/{{route.id}}" ng-click="setFilters(route)">{{route.longName}}</a></td>
+				</tr>
+				<tr class="customSilverBG">
+					<td colspan="2" align="left">Total routes found: {{routes.rows.length}}</td>
+				</tr>		
+			</table>
+		</div>
+	</div>
+
+</div>

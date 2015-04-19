@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="runxbus">
+	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<meta charset="UTF-8">
+		<title>RunXBus</title>
+		<script src='libs/angular-1.2.22/angular.min.js'></script>
+		<script src='libs/angular-1.2.22/angular-route.min.js'></script>
+		<script src='js/initApp.js'></script>
+		<script src='js/listViewController.js'></script>
+		<script src='js/detailsViewController.js'></script>
+		<script src='js/routes.js'></script>
+		<script src='js/directives.js'></script>
+		<script src='js/services.js'></script>
+		<script src='js/api.js'></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+	</head>
+
+	<body>
+	    <menu></menu>
+		<div ng-view></div>
+		<footer></footer>
+	</body>
+</html>
