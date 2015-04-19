@@ -1,6 +1,7 @@
 RunXBus
 =====
-RunXBus is a simple app which searches some routes and timetables of Florianópolis's public transportation
+RunXBus is a simple app which searches some routes and timetables of Florianópolis's public transportation.
+This appplication is part of ArcTouch's Code Testing challenge.
 
 
 Important App Files
@@ -23,10 +24,15 @@ Important App Files
 * www/libs/angular-1.2.22/*.*
 * screenshots/*.*
 
+
 Info and Run
 ------------------------------
 This application runs in the web browser. 
 It is based in HTML5, CSS3 and JavaScript powered by AngularJS and based on Restful Webservices.
-You can just download the files and run index.html from your machine.
-OBS.: At momment this app is compatible only in Firefox browser.
-See the screenshots to check the app frontend.
+The folders an files structures are base in PhoneGap/Cordova project.
+
+You can just download the files and run www/index.html from your machine.
+
+See the screenshots to check the app frontend on Mobile and PC.
+
+OBS.: At momment this app is compatible only with Firefox browser (Mobile and PC).
