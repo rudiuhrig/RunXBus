@@ -36,3 +36,11 @@ You can just download the files and run www/index.html from your machine.
 See the screenshots to check the app frontend on Mobile and PC.
 
 OBS.: At momment this app is compatible only with Firefox browser (Mobile and PC).
+
+Observations
+------------------
+1. In general there's no optimizations for mobile like additional CSS rules, libraries or Cordova's project configurations.
+2. The use of AngularJS was good. There was no incorrect usage or antipatterns found.
+3. It worked for once, the first time I tested it on iOS simulator. After that I've tried to run it on my iPhone 5s and again on iOS simulators (4s and 5s). It was not possible to get search results for any search, even the ones that have worked before.
+4. More observations on the pull request for the original repository, as comments inside the code.
+

@@ -9,6 +9,32 @@ app.factory('PersistenceService', function() {
     var persistedData    = null;
     var persistedFilters = null;
 
+    //I would try to keep a more clear API here by using something like
+    // return {
+    //     data: {
+    //         persist: function(data) {
+    //             persistedData = data;
+    //         },
+    //         clear: function() {
+    //             persistedData = null;
+    //         },
+    //         get: function() {
+    //             return persistedData; 
+    //         }
+    //     },
+    //     filters: {
+    //         persist: function(data) {
+    //             persistedFilters = data;
+    //         },
+    //         clear: function() {
+    //             persistedFilters = null;
+    //         },
+    //         get: function() {
+    //             return persistedFilters; 
+    //         }
+    //     }
+    // };
+    
     return {
         persist: function(data) {
             persistedData = data;

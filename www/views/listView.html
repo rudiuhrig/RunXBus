@@ -3,6 +3,9 @@
 
 	<div class="jumbotron">
 		<div>Inform street name</div>
+		<!-- 
+		Good use of angular's form validation
+		 -->
 		<form name="searchForm">
 			<div class="controls form-inline customMarginBottom">
 				<input type="text" class="form-control"	placeholder="Search by street name and tap search button" 
@@ -28,6 +31,9 @@
 		</form>
 	</div>
 
+	<!-- 
+		This entire section should not be visible if a search was not performed yet.
+	 -->
 	<div class="jumbotron">
 		<div>Routes list for street name: {{stopName}}</div>
 		<loading class="spinner" ng-show="loading"></loading>

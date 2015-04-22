@@ -5,9 +5,12 @@
  * @since 17/04/2015
  * @copyright Rudi Uhrig Neto 2015
  */
+ //good use of angular's factory
 app.factory("RunxBusAPI", ['$http', function($http) {
 
 	//Prepare Basic Auth and custom header
+	//consider moving the API key to config file and add it to the .gitignore file
+	//is not safe keep that kind of information in the repository
 	$http.defaults.headers.common['Authorization'] = 'Basic V0tENE43WU1BMXVpTThWOkR0ZFR0ek1MUWxBMGhrMkMxWWk1cEx5VklsQVE2OA==';
 	$http.defaults.headers.post['X-AppGlu-Environment'] = 'staging';
 
@@ -20,6 +23,8 @@ app.factory("RunxBusAPI", ['$http', function($http) {
 	var _prepareJsonPost = function(keyParam, valueParam) {
         var jsonPost = {
             params: {
+        				//this sound wrong to me. I don't even think it's valid syntax
+        				//I've tried to evaluate it using Chrome's console and got a SyntaxError
                 [keyParam]: valueParam
             }
         };
@@ -33,6 +38,7 @@ app.factory("RunxBusAPI", ['$http', function($http) {
 	*/
 	var _searchRoutes = function(stopName) {
 		var routeParams = _prepareJsonPost('stopName', stopName);
+		//would extract the common part of the URL to a constant
 		return $http.post("https://api.appglu.com/v1/queries/findRoutesByStopName/run", routeParams);
 	};
 	
