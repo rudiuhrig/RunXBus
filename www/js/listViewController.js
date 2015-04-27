@@ -27,6 +27,7 @@ app.controller("listViewController", ['$scope', 'RunxBusAPI', 'PersistenceServic
 		RunxBusAPI.searchRoutes(stringSearch).success(function(data, status) {
 			$scope.routes = data;
 
+			//perfome persistence of data without check it's state or consistency
 			//Stores data for back to this page
 			PersistenceService.persist(data);
 

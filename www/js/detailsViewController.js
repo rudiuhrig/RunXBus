@@ -52,7 +52,7 @@ app.controller("detailsViewController", ['$scope', 'RunxBusAPI', 'PersistenceSer
 			}
 		}).error(function(data, status) {
 			console.log(data);
-		}).finally(function() {
+		}).finally(function() { //good use of finally clause to control loading information
 			$scope.loadingRouteStops = false;
 		});
 	};
